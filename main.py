@@ -14,7 +14,7 @@ import re
 # загрузка данных из Excel без заголовков столбцов
 df = pd.read_excel('your_path_to_the_training_sample', header=None) #в репозитории доступен файл norm.csv.xlsx, который можно скачать и использовать для дообучения BERT
 transcriptions = df.iloc[:, :-1].apply(lambda x: ' '.join(x.dropna().astype(str)), axis=1).tolist()
-labels = df.iloc[:, -1].astype(int).tolist()
+labels = df.iloc[:, -1].astype(int).tolist() 
 
 #преобразование в формат Dataset
 data = Dataset.from_dict({'text': transcriptions, 'label': labels})
